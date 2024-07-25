@@ -1,2 +1,2 @@
 # Crypto-Currently
-Crypto Tracking &amp; News App
+Crypto Currency Tracking
