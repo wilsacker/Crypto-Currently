@@ -79,3 +79,15 @@ module.exports = {
   fetchCryptoData,
   fetchCurrencyData
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetch('https://api.coindesk.com/v1/bpi/currentprice/BTC.json')
+      .then(response => response.json())
+      .then(data => {
+          document.getElementById('bitcoin-price').textContent = data.bpi.USD.rate;
+          // Assuming you have other endpoints for market cap and 24h change
+          document.getElementById('bitcoin-market-cap').textContent = '...'; // Populate with real data
+          document.getElementById('bitcoin-change').textContent = '...'; // Populate with real data
+      })
+      .catch(error => console.error('Error fetching Bitcoin data:', error));
+});
