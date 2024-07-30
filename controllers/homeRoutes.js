@@ -4,6 +4,12 @@ const { requireLogin, allowGuests } = require('../helpers/auth');
 const router = express.Router();
 const { fetchCryptoData, fetchCurrencyData } = require('../path/to/fetchData');
 
+
+router.get('/', async (req, res) => {
+  const popularItems = await getPopularItems(); // Implement this function to fetch popular items
+  res.render('homepage', { popularItems });
+});
+
 router.get('/crypto', async (req, res) => {
   try {
     const cryptoData = await fetchCryptoData();

@@ -9,8 +9,11 @@
     <link href="../../public/css/style.css" rel="stylesheet">
 </head>
 <body class="light-mode">
+   
     <header class="bg-dark text-white text-center py-3 mb-4">
         <h1>Crypto-Currently</h1>
+    </header>
+    
     <nav class="navbar navbar-expand-lg navbar-custom">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -45,7 +48,18 @@
         </div>
     </nav>
 
+    <main>
     {{{body}}}
+
+    <section id="top-ten-popular">
+        <h2>Top 10 Most Popular</h2>
+        <ul>
+            {{#each popularItems}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    </section>
+</main>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
