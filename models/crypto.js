@@ -18,18 +18,7 @@ CryptoCurrency.init(
     symbol: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    priceUSD: {
-      type: DataTypes.DECIMAL(12, 2),
-    },
-    marketCap: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    circulatingSupply: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    },   
   },
   {
     sequelize,

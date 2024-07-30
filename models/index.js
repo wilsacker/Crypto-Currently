@@ -9,7 +9,7 @@ User.hasMany(CryptoCurrency, {
   onDelete: 'CASCADE'
 });
 
-Crypto.belongsTo(User, {
+CryptoCurrency.belongsTo(User, {
   foreignKey: 'userId',
 });
 
