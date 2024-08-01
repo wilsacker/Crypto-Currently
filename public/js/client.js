@@ -1,17 +1,22 @@
 function handleButtonClick(event) {
+    const cryptoInfoToggle = document.getElementById("crypto-info")
     const button = event.target;
     const abbreviation = button.dataset.abbreviation;
+
+    cryptoInfoToggle.style.display = "block"
 
     fetch(`/api/crypto?symbol=${abbreviation}`)
         .then(response => response.json())
         .then(data => {
-            const price = data.price || 'N/A';
-            const marketCap = data.marketCap || 'N/A';
-            const change = data.change || 'N/A';
+            const name = data.name || 'N/A';
+            const rate = data.rate || 'N/A';
+            const time = data.time || 'N/A';
+            const formattedRate = rate.toFixed(2);
+            const newDate = new Date(time);
 
-            document.getElementById('crypto-price').textContent = `Price: ${price}`;
-            document.getElementById('crypto-market-cap').textContent = `Market Cap: ${marketCap}`;
-            document.getElementById('crypto-change').textContent = `Change: ${change}`;
+            document.getElementById('crypto-price').textContent = `Name: ${name}`;
+            document.getElementById('crypto-market-cap').textContent = `Rate: ${formattedRate}`;
+            document.getElementById('crypto-change').textContent = `Time: ${newDate}`;
         })
         .catch(error => console.error('Error fetching cryptocurrency data:', error));
 };

@@ -107,3 +107,7 @@ body {
 .theme-toggle {
     margin-left: 15px;
 }
+
+#crypto-info {
+    display: none;
+}
