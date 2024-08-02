@@ -37,10 +37,10 @@
                     </li>
                 
             </ul>
-            <form class="form-inline search-form my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-            </form>
+           <form id="crypto-search-form" class="form-inline search-form my-2 my-lg-0">
+  <input id="crypto-search-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+</form>
             <button id="themeToggle" class="btn btn-outline-light theme-toggle">Toggle Theme</button>
         </div>
     </nav>
@@ -53,6 +53,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="/js/search.js"></script>
 
     <script src="/js/logic.js"></script>
      {{#if loggedIn}}

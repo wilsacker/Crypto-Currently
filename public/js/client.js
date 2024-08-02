@@ -45,4 +45,3 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Error fetching popular items:', error));
 });
 
-
