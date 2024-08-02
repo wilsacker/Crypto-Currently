@@ -11,7 +11,7 @@ function handleButtonClick(event) {
             const name = data.name || 'N/A';
             const rate = data.rate || 'N/A';
             const time = data.time || 'N/A';
-            const formattedRate = rate.toFixed(2);
+            const formattedRate = typeof rate === 'number' ? rate.toFixed(4) : rate; // Format to 4 decimals
             const newDate = new Date(time);
 
             document.getElementById('crypto-price').textContent = `Name: ${name}`;
@@ -43,6 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         })
         .catch(error => console.error('Error fetching popular items:', error));
-
-
 });
+
+

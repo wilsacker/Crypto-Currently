@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     try {
         const itemsData = await fetchCryptoData(req.query.symbol)
-        res.json(itemsData[0])
+        res.json(itemsData)
     } catch (error) {
         console.error("Error fetching popular items:", error);
         res.status(500).json({ error: "Failed to fetch popular items" });
