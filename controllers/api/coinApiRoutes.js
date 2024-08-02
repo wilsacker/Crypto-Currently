@@ -8,9 +8,9 @@ const baseUrlCrypto = "https://rest.coinapi.io/v1/";
 const apiKeyCurrency = "fca_live_lcB5KgViVtG6E9M7fglQ5KVkLn71CudXQWCZ1Bdq";
 const baseUrlCurrency = "https://api.freecurrencyapi.com/v1/latest";
 
-function fetchCryptoData(coin) {
+function fetchCryptoData(coin, name, abbreviation) {
   return new Promise((resolve, reject) => {
-    const url = `${baseUrlCrypto}exchangerate/${coin}/USD`;
+    const url = `${baseUrlCrypto}exchangerate/${coin, name, abbreviation}/USD`;
     console.log(`Fetching URL: ${url}`); // Debugging: Log the URL being fetched
 
     fetch(url, {
@@ -74,3 +74,5 @@ module.exports = {
   fetchCryptoData,
   fetchCurrencyData
 };
+
+

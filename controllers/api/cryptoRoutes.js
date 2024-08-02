@@ -12,6 +12,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-module.exports = router;
 
-
+  
+  // Modify your module.exports to include the router
+  module.exports = router;

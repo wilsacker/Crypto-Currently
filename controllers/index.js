@@ -5,6 +5,8 @@ const apiRoutes = require('./api/index.js');
 const myWatchlist = require('./myWatchlist');
 const homeRoutes = require('./homeRoutes');
 
+
+
 // Define routes
 
 router.use('/myWatchlist' ,myWatchlist);
