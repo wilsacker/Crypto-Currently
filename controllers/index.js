@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 const apiRoutes = require('./api/index.js');
-const myWatchlist = require('./myWatchlist');
+const myWatchList = require('./myWatchListRoutes.js');
 const homeRoutes = require('./homeRoutes');
 
 
 
 // Define routes
 
-router.use('/myWatchlist' ,myWatchlist);
+router.use('/myWatchList' ,myWatchList);
 router.use('/', homeRoutes);
 router.use('/api' , apiRoutes);
 

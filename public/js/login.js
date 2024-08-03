@@ -1,27 +1,36 @@
-const router = require('express').Router();
-const { User } = require('../../models');
+document.addEventListener('DOMContentLoaded', () => {
+  const loginForm = document.getElementById('login-form');
+  const usernameInput = document.getElementById('username-input-login');
+  const passwordInput = document.getElementById('password-input-login');
 
-// User login
-router.post('/login', async (req, res) => {
-  try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
+  // Handle login form submission
+  loginForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent default form submission
 
-    if (!userData) {
-      res.status(400).json({ message: 'Incorrect email or password, please try again' });
-      return;
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    if (username && password) {
+      try {
+        const response = await fetch('/login', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ username, password }) // Send username and password in the body
+        });
+          
+        if (response.ok) {
+          // Redirect to the homepage if login is successful
+          document.location.replace('/');
+        } else {
+          // Display an alert if login fails
+          alert('Failed to login. Please check your username and password.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An unexpected error occurred. Please try again.');
+      }
+    } else {
+      alert('Please enter both username and password.');
     }
-
-    const validPassword = userData.checkPassword(req.body.password);
-
-    if (!validPassword) {
-      res.status(400).json({ message: 'Incorrect email or password, please try again' });
-      return;
-    }
-
-    res.status(200).json({ user: userData, token });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+  });
 });
-
-module.exports = router;
