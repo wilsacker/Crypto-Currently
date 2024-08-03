@@ -22,19 +22,18 @@
                 </li>
                 <li class="nav-item">
                     {{#if mywatchlist}}
-                    <a class="nav-link" href="#">My Watchlist</a>
+                    <a class="nav-link" href="/login">My Watchlist</a>
                     {{else}}
-                     <a class="nav-link" href="#">Watchlist</a>
+                     <a class="nav-link" href="/signup">Watchlist</a>
                      {{/if}}
                 </li>
-               
                     <li class="nav-item">
                     {{#if loggedIn}}
                         <a class="nav-link" href="#" id="logout">Logout</a>
                         {{else}}
-                        <a class="nav-link" href="#" id="login">Log In</a>
+                        <a class="nav-link" href="#" id="login">Login/Signup</a>
                     {{/if}}  
-                    </li>
+                   
                 
             </ul>
            <form id="crypto-search-form" class="form-inline search-form my-2 my-lg-0">
