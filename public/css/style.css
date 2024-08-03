@@ -111,3 +111,237 @@ body {
 #crypto-info {
     display: none;
 }
+/* General body styling for background and font */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  /* Styling for the login card */
+  .login-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+  }
+  
+  /* Styling for the login card header */
+  .login-card-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Styling for the login form */
+  .login-card-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Styling for form labels */
+  .login-form-label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  /* Styling for form inputs */
+  .login-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+  }
+  
+  /* Styling for password container */
+  .password-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Styling for password toggle button */
+  .toggle-password-btn {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 14px;
+    margin-left: 5px;
+  }
+  
+  /* Styling for login button */
+  .login-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styling for signup link */
+  .signup-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .signup-link:hover {
+    text-decoration: underline;
+  }
+  
+
+  /* Styling for the signup card */
+.signup-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+  }
+  
+  /* Styling for the signup card header */
+  .signup-card-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Styling for the signup form */
+  .signup-card-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Styling for form labels */
+  .signup-form-label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  /* Styling for form inputs */
+  .signup-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+  }
+  
+  /* Styling for password container */
+  .password-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Styling for password toggle button */
+  .password-toggle-btn {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 14px;
+    margin-left: 5px;
+  }
+  
+  /* Styling for signup button */
+  .signup-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signup-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styling for login link */
+  .login-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .login-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Styling for the crypto-info section */
+#crypto-info {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px auto;
+  }
+  
+  /* Styling for the watchlist button */
+  .watchlist-btn {
+    display: flex;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  .watchlist-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styling for the plus sign inside the button */
+  .plus-sign {
+    display: inline-block;
+    background-color: white;
+    color: #007bff;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 16px;
+    margin-right: 8px;
+  }
+  
