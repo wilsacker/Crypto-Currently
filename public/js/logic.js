@@ -18,3 +18,28 @@ themeToggle.addEventListener('click', () => {
     }
 });
 
+
+// Function to toggle password visibility
+function togglePasswordVisibility(passwordInputId, toggleButton) {
+    const passwordInput = document.getElementById(passwordInputId);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleButton.textContent = 'Hide';
+    } else {1
+        passwordInput.type = 'password';
+        toggleButton.textContent = 'Show';
+    }
+}
+
+// Add event listener for login password toggle
+document.getElementById('toggle-password').addEventListener('click', function() {
+    togglePasswordVisibility('password-input-login', this);
+});
+
+// Function to toggle signup password visibility
+function toggleSignupPassword() {
+    const toggleButton = document.querySelector('.password-toggle-btn');
+    togglePasswordVisibility('password-input-signup', toggleButton);
+}
+

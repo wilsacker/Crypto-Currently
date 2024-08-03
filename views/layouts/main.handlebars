@@ -18,20 +18,23 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    {{#if mywatchlist}}
-                    <a class="nav-link" href="/login">My Watchlist</a>
+                    {{#if watchlist}}
+                    <a class="nav-link" href="/watchList">My Watchlist</a>
                     {{else}}
-                     <a class="nav-link" href="/signup">Watchlist</a>
+                     <a class="nav-link" href="/login">Watchlist</a>
                      {{/if}}
                 </li>
                     <li class="nav-item">
-                    {{#if loggedIn}}
+                    {{#if logged_in}}
                         <a class="nav-link" href="#" id="logout">Logout</a>
                         {{else}}
-                        <a class="nav-link" href="#" id="login">Login/Signup</a>
+                        <a class="nav-link" href="/login" id="login">Login</a>
+                        <li class="nav-item"></li>
+                        <a class="nav-link" href="/signup" id="login">Signup</a>
+                        </li>
                     {{/if}}  
                    
                 
@@ -55,7 +58,9 @@
         <script src="/js/search.js"></script>
 
     <script src="/js/logic.js"></script>
-     {{#if loggedIn}}
+    <script src="/js/login.js"></script>
+    <script src="/js/signup.js"></script>
+     {{#if logged_in}}
       <script src="/js/logout.js"></script>
     {{/if}}
 </body>

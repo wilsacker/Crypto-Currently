@@ -1,19 +1,18 @@
 const User = require('./user');
 const CryptoCurrency = require('./crypto');
+const WatchList = require('./watchList');
 
-// Define associations here if any
-// For example, if a user can have multiple cryptos in their watchlist, you might define an association like this:
-
-User.hasMany(CryptoCurrency, {
-  foreignKey: 'userId',
-  onDelete: 'CASCADE'
+// Define associations
+User.belongsToMany(CryptoCurrency, { 
+  through: WatchList, 
+  foreignKey: 'user_id',
+  as: 'cryptocurrencies' // Optional alias
 });
 
-CryptoCurrency.belongsTo(User, {
-  foreignKey: 'userId',
+CryptoCurrency.belongsToMany(User, { 
+  through: WatchList, 
+  foreignKey: 'crypto_id',
+  as: 'users' // Optional alias
 });
 
-module.exports = {
-  User,
-  CryptoCurrency,
-};
+module.exports = { User, CryptoCurrency, WatchList };
