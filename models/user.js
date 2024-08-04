@@ -19,6 +19,9 @@ User.init(
     username: {
       type: DataTypes.STRING,
       allowNull: false,
+      set(value) {
+        this.setDataValue('username', value.toLowerCase());
+      },
     },
     password: {
       type: DataTypes.STRING,
