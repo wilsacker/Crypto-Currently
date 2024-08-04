@@ -4,10 +4,13 @@ const { User } = require('../../models');
 // Route to create a new user (sign-up)
 router.post('/', async (req, res) => {
   try {
-
     const { username, password } = req.body;
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     // Create a new user with hashed password
-    const newUser = await User.create({ username , password });
+    const newUser = await User.create({ username, password: hashedPassword });
 
     // Save session
     req.session.save(() => {
@@ -18,7 +21,8 @@ router.post('/', async (req, res) => {
       res.status(200).json(newUser);
     });
   } catch (err) {
-    res.status(500).json(err);
+    console.error('Error creating user:', err); // Log the error for debugging
+    res.status(500).json({ message: 'Failed to create user', error: err });
   }
 });
 
