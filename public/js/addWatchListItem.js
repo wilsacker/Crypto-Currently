@@ -23,4 +23,6 @@ document.getElementById('add-to-watchlist').addEventListener('click', async () =
       alert('An error occurred. Please try again.');
     }
   });
+
+  
   module.exports= router;

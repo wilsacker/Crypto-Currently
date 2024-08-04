@@ -108,9 +108,6 @@ body {
     margin-left: 15px;
 }
 
-#crypto-info {
-    display: none;
-}
 
 /* Styling for the login card */
 .login-card {
@@ -327,12 +324,14 @@ body {
 
 /* Styling for the crypto-info section */
 #crypto-info {
+    display: none;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     max-width: 400px;
     margin: 20px auto;
-}
+  }
+   
 
 /* Styling for the watchlist button */
 .watchlist-btn {

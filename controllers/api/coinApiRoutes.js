@@ -15,7 +15,7 @@ function fetchCryptoData(coin) {
 
     fetch(url, {
       headers: {
-        "X-CoinAPI-Key": apiKeyCryptoTwo
+        "X-CoinAPI-Key": apiKeyCrypto
       }
     })
     .then(response => {
