@@ -15,7 +15,11 @@ router.get('/', requireLogin, async (req, res) => {
     // Extract the cryptocurrency data
     const userWatchlist = watchlistEntries.map(entry => entry.crypto_currency);
 
-    res.render('watchList', { watchlist: userWatchlist });
+    res.render('watchList', { 
+      watchlist: true,
+      watchlist: userWatchlist,
+      loggedIn: req.session.logged_in,
+     });
   } catch (error) {
     console.error('Error fetching watchlist:', error);
     res.status(500).send('Server error');
@@ -30,7 +34,8 @@ router.delete('/remove-from-watchlist', requireLogin, async (req, res) => {
     await Watchlist.destroy({
       where: {
         user_id: userId,
-        crypto_id: cryptoId
+        crypto_id: cryptoId,
+        loggedIn: req.session.logged_in,
       }
     });
 

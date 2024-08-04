@@ -413,4 +413,12 @@ body {
 .watchlist-item .remove-btn:hover {
     background-color: #e60000;
 }
+.uppercase {
+    text-transform: uppercase;
+}
+@media (max-width: 768px) {
+    .uppercase {
+        text-transform: uppercase;
+    }
+}
 
