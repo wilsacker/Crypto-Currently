@@ -1,8 +1,4 @@
 const cryptoInfoToggle = document.getElementById("crypto-info")
- 
-
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const searchForm = document.getElementById('crypto-search-form');
@@ -30,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const formattedRate = typeof rate === 'number' ? rate.toFixed(4) : rate; // Format to 4 decimals
           const newDate = new Date(time);
           document.getElementById('crypto-price').textContent = `Name: ${name}`;
-          document.getElementById('crypto-market-cap').textContent = `Rate: ${formattedRate}`;
+          document.getElementById('crypto-market-cap').textContent = `Rate: ${formattedRate} `;
           document.getElementById('crypto-change').textContent = `Time: ${newDate}`;
           cryptoInfoToggle.style.display = "block"
         })
