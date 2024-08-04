@@ -1,4 +1,4 @@
-// Function to handle the logout process
+
 const logout = async () => {
   try {
     // Send a POST request to the logout endpoint
@@ -23,4 +23,6 @@ const logout = async () => {
 };
 
 // Attach the logout function to the click event of the logout button
-document.querySelector('#logout').addEventListener('click', logout);
+document.querySelector('#logout').addEventListener('click', logout);// Function to handle the logout process
+
+
