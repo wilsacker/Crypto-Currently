@@ -30,7 +30,7 @@
                     <li class="nav-item">
                     {{#if loggedIn}}
                     
-                        <a class="nav-link" href="/login" id="logout">Logout</a>
+                        <a class="nav-link" href="/" id="logout">Logout</a>
                         <li>Welcome, <strong class="uppercase">{{username}}</strong></li>
                         {{else}}
                         <a class="nav-link" href="/login" id="login">Login</a>
@@ -52,7 +52,9 @@
     {{{body}}}
 </main>
     
-
+ {{#if loggedIn}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
@@ -62,8 +64,5 @@
     <script src="/js/logic.js"></script>
     <script src="/js/login.js"></script>
     <script src="/js/signup.js"></script>
-     {{#if logged_in}}
-      <script src="/js/logout.js"></script>
-    {{/if}}
 </body>
 </html>
