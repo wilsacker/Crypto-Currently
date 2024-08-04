@@ -6,13 +6,15 @@ const WatchList = require('./watchList');
 User.belongsToMany(CryptoCurrency, { 
   through: WatchList, 
   foreignKey: 'user_id',
-  as: 'cryptocurrencies' // Optional alias
+  otherKey: 'crypto_id',
+  as: 'cryptocurrencies'
 });
 
 CryptoCurrency.belongsToMany(User, { 
   through: WatchList, 
   foreignKey: 'crypto_id',
-  as: 'users' // Optional alias
+  otherKey: 'user_id',
+  as: 'users'
 });
 
 module.exports = { User, CryptoCurrency, WatchList };

@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       try {
-        const response = await fetch('/mywatchList/add', {
+        const response = await fetch('/watchlist/add', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -9,7 +9,7 @@ const homeRoutes = require('./homeRoutes');
 
 // Define routes
 
-router.use('/mywatchList' ,myWatchList);
+router.use('/watchlist' ,myWatchList);
 router.use('/', homeRoutes);
 router.use('/api' , apiRoutes);
 

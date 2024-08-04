@@ -1,14 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const { requireLogin } = require('../helpers/auth');
-const User = require('../models/User');
-const Crypto = require('../models/Crypto');
+const { User, CryptoCurrency, WatchList } = require('../models');
 
 // Get watchlist items
 router.get('/', requireLogin, async (req, res) => {
   try {
     const user = await User.findByPk(req.session.userId, {
-      include: [{ model: Crypto, through: 'UserCrypto' }]
+      include: [{ 
+        model: CryptoCurrency, 
+        as: 'cryptocurrencies',
+        through: { attributes: [] } // This will exclude the join table attributes
+      }]
     });
 
     if (!user) {
@@ -16,8 +19,9 @@ router.get('/', requireLogin, async (req, res) => {
     }
 
     res.render('watchList', {
-      cryptos: user.Cryptos,
+      cryptos: user.cryptocurrencies,
       loggedIn: true,
+      watchlist: true,
       username: req.session.username
     });
   } catch (error) {
@@ -31,13 +35,13 @@ router.post('/add', requireLogin, async (req, res) => {
   try {
     const { cryptoId } = req.body;
     const user = await User.findByPk(req.session.userId);
-    const crypto = await Crypto.findByPk(cryptoId);
+    const crypto = await CryptoCurrency.findByPk(cryptoId);
 
     if (!user || !crypto) {
       return res.status(404).json({ message: 'User or Crypto not found' });
     }
 
-    await user.addCrypto(crypto);
+    await user.addCryptocurrency(crypto);
     res.status(200).json({ message: 'Added to watchlist successfully' });
   } catch (error) {
     console.error('Error adding to watchlist:', error);

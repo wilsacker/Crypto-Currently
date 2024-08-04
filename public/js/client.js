@@ -60,35 +60,4 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((error) => console.error("Error fetching popular items:", error));
 
-  // Add event listener for the Add to Watchlist button
-  const addToWatchlistBtn = document.getElementById("add-to-watchlist");
-  if (addToWatchlistBtn) {
-    addToWatchlistBtn.addEventListener("click", async () => {
-      const cryptoId = addToWatchlistBtn.dataset.cryptoId;
-      if (!cryptoId) {
-        alert("No cryptocurrency selected");
-        return;
-      }
-
-      try {
-        const response = await fetch("/mywatchList/add", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ cryptoId }),
-        });
-
-        if (response.ok) {
-          alert("Added to watchlist!");
-        } else {
-          const errorData = await response.json();
-          alert(errorData.message || "Failed to add to watchlist");
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        alert("An error occurred while adding to watchlist");
-      }
-    });
-  }
 });
