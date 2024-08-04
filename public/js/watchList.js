@@ -2,6 +2,8 @@ const express = require('express');
 const { Watchlist } = require('../models');
 const router = express.Router();
 
+
+
 router.delete('/', async (req, res) => {
   try {
     const { cryptoId } = req.body; // Get the cryptocurrency ID from the request body
@@ -21,5 +23,7 @@ router.delete('/', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
+
+
 
 module.exports = router;

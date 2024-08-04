@@ -26,6 +26,18 @@ router.get('/', requireLogin, async (req, res) => {
   }
 });
 
+router.post('/mywatchlist', requireLogin, async (req, res) => {
+  try {
+    const userId = req.session.user_id;
+    const { cryptoId } = req.body;
+
+    await Watchlist.create({ userId, cryptoId });
+    res.status(200).json({ message: 'Added to watchlist' });
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to add to watchlist' });
+  }
+});
+
 router.delete('/remove-from-watchlist', requireLogin, async (req, res) => {
   try {
     const { cryptoId } = req.body;
@@ -39,7 +51,7 @@ router.delete('/remove-from-watchlist', requireLogin, async (req, res) => {
       }
     });
 
-    res.redirect('/watchlist'); // Redirect to watchlist page after removal
+    res.redirect('/watchList'); // Redirect to watchlist page after removal
   } catch (error) {
     console.error('Error removing item from watchlist:', error);
     res.status(500).send('Server error');
