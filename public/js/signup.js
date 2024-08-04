@@ -1,35 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Use the correct ID for the form
   const signupForm = document.getElementById('signup-form');
   const usernameInput = document.getElementById('username-input-signup');
   const passwordInput = document.getElementById('password-input-signup');
 
-  if (!signupForm) {
-    console.error('Signup form element not found');
-    return;
-  }
-
-  // Handle signup form submission
   signupForm.addEventListener('submit', async (event) => {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
     const username = usernameInput.value.trim();
     const password = passwordInput.value.trim();
 
     if (username && password) {
       try {
-        const response = await fetch('/api/users', {
+        const response = await fetch('/signup', {
           method: 'POST',
-          body: JSON.stringify({ username, password }),
           headers: {'Content-Type': 'application/json'},
-          
+          body: JSON.stringify({ username, password })
         });
-
+          
         if (response.ok) {
-          // Redirect to the homepage if the signup was successful
           document.location.replace('/');
         } else {
-          // Display an alert if the signup failed
           alert('Failed to sign up. Please try again.');
         }
       } catch (error) {

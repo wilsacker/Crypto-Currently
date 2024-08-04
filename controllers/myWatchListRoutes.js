@@ -1,60 +1,47 @@
 const express = require('express');
-const { requireLogin } = require('../helpers/auth');
 const router = express.Router();
+const { requireLogin } = require('../helpers/auth');
+const User = require('../models/User');
+const Crypto = require('../models/Crypto');
 
+// Get watchlist items
 router.get('/', requireLogin, async (req, res) => {
   try {
-    const userId = req.session.user_id; 
-
-    // Fetch the user's watchlist from the database
-    const watchlistEntries = await Watchlist.findAll({
-      where: { user_id: userId },
-      include: [CryptoCurrency]
+    const user = await User.findByPk(req.session.userId, {
+      include: [{ model: Crypto, through: 'UserCrypto' }]
     });
 
-    // Extract the cryptocurrency data
-    const userWatchlist = watchlistEntries.map(entry => entry.crypto_currency);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
 
-    res.render('watchList', { 
-      watchlist: true,
-      watchlist: userWatchlist,
-      loggedIn: req.session.logged_in,
-     });
+    res.render('watchList', {
+      cryptos: user.Cryptos,
+      loggedIn: true,
+      username: req.session.username
+    });
   } catch (error) {
     console.error('Error fetching watchlist:', error);
-    res.status(500).send('Server error');
+    res.status(500).json({ message: 'Error fetching watchlist' });
   }
 });
 
-router.post('/mywatchlist', requireLogin, async (req, res) => {
-  try {
-    const userId = req.session.user_id;
-    const { cryptoId } = req.body;
-
-    await Watchlist.create({ userId, cryptoId });
-    res.status(200).json({ message: 'Added to watchlist' });
-  } catch (err) {
-    res.status(500).json({ message: 'Failed to add to watchlist' });
-  }
-});
-
-router.delete('/remove-from-watchlist', requireLogin, async (req, res) => {
+// Add item to watchlist
+router.post('/add', requireLogin, async (req, res) => {
   try {
     const { cryptoId } = req.body;
-    const userId = req.session.user_id; // Ensure the key matches
+    const user = await User.findByPk(req.session.userId);
+    const crypto = await Crypto.findByPk(cryptoId);
 
-    await Watchlist.destroy({
-      where: {
-        user_id: userId,
-        crypto_id: cryptoId,
-        loggedIn: req.session.logged_in,
-      }
-    });
+    if (!user || !crypto) {
+      return res.status(404).json({ message: 'User or Crypto not found' });
+    }
 
-    res.redirect('/watchList'); // Redirect to watchlist page after removal
+    await user.addCrypto(crypto);
+    res.status(200).json({ message: 'Added to watchlist successfully' });
   } catch (error) {
-    console.error('Error removing item from watchlist:', error);
-    res.status(500).send('Server error');
+    console.error('Error adding to watchlist:', error);
+    res.status(500).json({ message: 'Error adding to watchlist' });
   }
 });
 

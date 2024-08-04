@@ -3,9 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const usernameInput = document.getElementById('username-input-login');
   const passwordInput = document.getElementById('password-input-login');
 
-  // Handle login form submission
   loginForm.addEventListener('submit', async (event) => {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
     const username = usernameInput.value.trim();
     const password = passwordInput.value.trim();
@@ -15,14 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const response = await fetch('/login', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({ username, password }) // Send username and password in the body
+          body: JSON.stringify({ username, password })
         });
           
         if (response.ok) {
-          // Redirect to the homepage if login is successful
           document.location.replace('/');
         } else {
-          // Display an alert if login fails
           alert('Failed to login. Please check your username and password.');
         }
       } catch (error) {
