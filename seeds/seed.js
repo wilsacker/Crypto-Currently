@@ -1,6 +1,5 @@
-const sequelize = require('../config/connection'); // Adjust the path as needed
-const { User, CryptoCurrency, WatchList } = require('../models'); // Adjust the path as needed
-
+const sequelize = require('../config/connection'); 
+const { User, CryptoCurrency, WatchList } = require('../models'); 
 const userData = [
   {
     username: 'goksel',
@@ -52,19 +51,19 @@ const seedDatabase = async () => {
     // Seed Cryptocurrencies
     const cryptos = await CryptoCurrency.bulkCreate(cryptoData);
 
-    // // Example: Add all cryptocurrencies to all users
-    // const userCryptoAssociations = [];
-    // for (const user of users) {
-    //   for (const crypto of cryptos) {
-    //     userCryptoAssociations.push({
-    //       user_id: user.id,
-    //       crypto_id: crypto.id,
-    //     });
-    //   }
-    // }
+    // Example: Add all cryptocurrencies to all users
+    const userCryptoAssociations = [];
+    for (const user of users) {
+      for (const crypto of cryptos) {
+        userCryptoAssociations.push({
+          user_id: user.id,
+          crypto_id: crypto.id,
+        });
+      }
+    }
 
-    // // Seed the WatchList associations
-    // await WatchList.bulkCreate(userCryptoAssociations);
+    // Seed the WatchList associations
+    await WatchList.bulkCreate(userCryptoAssociations);
 
     console.log('Database seeded!');
   } catch (error) {
