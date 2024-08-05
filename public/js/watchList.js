@@ -4,12 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (addToWatchlistBtn) {
     addToWatchlistBtn.addEventListener('click', async () => {
-      const cryptoId = cryptoInfoSection.dataset.cryptoId;
-      if (!cryptoId) {
-        alert('No cryptocurrency selected');
-        return;
-      }
-
+      console.log(addToWatchlistBtn);
       try {
         const response = await fetch('/watchlist/add', {
           method: 'POST',
@@ -36,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', async function() {
       const cryptoId = this.dataset.cryptoId;
       try {
-        const response = await fetch('/mywatchList/remove', {
+        const response = await fetch('/watchlist/remove', {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',

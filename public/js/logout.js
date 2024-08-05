@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
       event.preventDefault();
 
       try {
-        const response = await fetch('/logout', {
+        const response = await fetch('/api/user/logout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
         });
