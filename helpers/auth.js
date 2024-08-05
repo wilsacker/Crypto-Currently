@@ -1,5 +1,5 @@
 const requireLogin = (req, res, next) => {
-  if (!req.session.loggedIn) {
+  if (!req.session.logged_in) {
     res.redirect('/login');
   } else {
     next();
@@ -7,7 +7,7 @@ const requireLogin = (req, res, next) => {
 };
 
 const allowGuests = (req, res, next) => {
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     res.redirect('/');
   } else {
     next();

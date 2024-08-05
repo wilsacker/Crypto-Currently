@@ -8,16 +8,24 @@ function handleButtonClick(event) {
   cryptoInfoToggle.style.display = "block";
   cryptoInfoToggle.dataset.cryptoId = button.dataset.cryptoId; // Store the crypto ID
 
-  getData(abbreviation);
+  
+  const cryptoData = getData(abbreviation);
+  
+     console.log(cryptoData);
+     
 }
 
+
 function getData(coin) {
+  let name = "";
+  let rate = "";
+  let time = "";
   fetch(`/api/crypto?symbol=${coin}`)
     .then((response) => response.json())
     .then((data) => {
-      const name = data.name || "N/A";
-      const rate = data.rate || "N/A";
-      const time = data.time || "N/A";
+       name = data.name || "BTC";
+       rate = data.rate || "500";
+       time = data.time || "August 4, 2024, 21:00:00";
       const formattedRate = typeof rate === "number" ? rate.toFixed(4) : rate;
       const newDate = new Date(time);
 
@@ -26,12 +34,22 @@ function getData(coin) {
       document.getElementById("crypto-change").textContent = `Time: ${newDate}`;
       
       // Update the Add to Watchlist button with the correct crypto ID
-      const addToWatchlistBtn = document.getElementById("add-to-watchlist");
-      if (addToWatchlistBtn) {
-        addToWatchlistBtn.dataset.cryptoId = data.id;
-      }
+      // const addToWatchlistBtn = document.getElementById("add-to-watchlist");
+      // if (addToWatchlistBtn) {
+      //   addToWatchlistBtn.dataset.cryptoId = data.id;
+
+      // }
+      
     })
-    .catch((error) => console.error("Error fetching cryptocurrency data:", error));
+    // .catch((error) => {
+    //   name = data.name || "BTC";
+    //   console.log(name)
+    //    rate = data.rate || "500";
+    //    time = data.time || "August 4, 2024, 21:00:00";
+    //   console.error("Error fetching cryptocurrency data:", error)});
+    return { 
+      name, rate ,time
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {

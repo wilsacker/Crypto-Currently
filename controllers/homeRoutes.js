@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     res.render('homepage', {
-      loggedIn: req.session.loggedIn,
+      loggedIn: req.session.logged_in,
       username: req.session.username
     });
   } catch (error) {
@@ -43,7 +43,7 @@ router.post('/login', async (req, res) => {
     // For this example, we'll just set the session
     req.session.loggedIn = true;
     req.session.username = username;
-    req.session.userId = 1; // This should be the actual user ID from your database
+    req.session.user_id = 1; // This should be the actual user ID from your database
     res.status(200).json({ message: 'Logged in successfully' });
   } catch (err) {
     console.error("Error logging in:", err);
@@ -59,7 +59,7 @@ router.post('/signup', async (req, res) => {
     // For this example, we'll just set the session
     req.session.loggedIn = true;
     req.session.username = username;
-    req.session.userId = 1; // This should be the actual user ID from your database
+    req.session.user_id = 1; // This should be the actual user ID from your database
     res.status(200).json({ message: 'Signed up successfully' });
   } catch (err) {
     console.error("Error signing up:", err);
