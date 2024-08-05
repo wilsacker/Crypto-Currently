@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const username = usernameInput.value.trim();
     const password = passwordInput.value.trim();
 
+ 
     if (username && password) {
       try {
         const response = await fetch('/api/users/login', {

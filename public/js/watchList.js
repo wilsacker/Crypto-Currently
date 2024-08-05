@@ -6,12 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     addToWatchlistBtn.addEventListener('click', async () => {
       console.log(addToWatchlistBtn);
       try {
-        const response = await fetch('/watchlist/add', {
+        const response = await fetch('/watchList/add', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ cryptoId }),
+          body: JSON.stringify({ name: "Bitcoin" , symbol :"BTC" }),
         });
 
         if (response.ok) {
