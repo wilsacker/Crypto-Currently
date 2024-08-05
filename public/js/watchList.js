@@ -3,20 +3,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (addToWatchlistBtn) {
     addToWatchlistBtn.addEventListener('click', async () => {
-      if (!selectedCrypto.symbol) {
+
+      const cryptoData = document.getElementById("crypto-price");
+      const symbol  = cryptoData.dataset.crypto
+      if (!symbol) {
         alert('No cryptocurrency selected or data not available');
         return;
       }
 
-      console.log('Adding to watchlist:', selectedCrypto.symbol); // Debugging: Log the symbol being sent
+      console.log('Adding to watchlist:', symbol); // Debugging: Log the symbol being sent
 
-      try {
+      // try {
         const response = await fetch('/watchList/add', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ symbol: selectedCrypto.symbol }), 
+          body: JSON.stringify({ symbol }), 
         });
 
         const result = await response.json();
@@ -30,10 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           alert(result.message || 'Failed to add to watchlist');
         }
-      } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred while adding to watchlist');
-      }
+      // } catch (error) {
+      //   console.error('Error:', error);
+      //   alert('An error occurred while adding to watchlist');
+      // }
     });
   }
 });

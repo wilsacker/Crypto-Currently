@@ -1,5 +1,5 @@
 // public/js/client.js
-let selectedCrypto = { symbol: "" };
+
 function handleButtonClick(event) {
   const cryptoInfoToggle = document.getElementById("crypto-info");
   const button = event.target;
@@ -35,12 +35,13 @@ function getData(coin) {
      const formattedRate = typeof rate === "number" ? rate.toFixed(4) : rate;
      const newDate = new Date(time);
 
-     document.getElementById("crypto-price").textContent = `Name: ${name}`;
+     const cryptoData = document.getElementById("crypto-price");
+     cryptoData.textContent = `Name: ${name}`;
+     cryptoData.dataset.crypto = name ;
      document.getElementById("crypto-market-cap").textContent = `Rate: ${formattedRate}`;
      document.getElementById("crypto-change").textContent = `Time: ${newDate}`;
     
-    
-      selectedCrypto.symbol = name;
+
     })
 
     .catch((error) =>

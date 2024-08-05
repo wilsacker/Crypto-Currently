@@ -15,7 +15,14 @@ const userData = [
   },
 ];
 
-const cryptoData = [
+const cryptoData = [         
+           
+          
+  { name: 'Polkadot', symbol: 'DOT' },
+  { name: 'Chainlink', symbol: 'LINK' },
+  { name: 'Stellar', symbol: 'XLM' },
+  { name: 'Solana', symbol: 'SOL' },
+  { name: 'Dogecoin', symbol: 'DOGE' },
   {
     name: 'Bitcoin',
     symbol: 'BTC',
@@ -51,19 +58,8 @@ const seedDatabase = async () => {
     // Seed Cryptocurrencies
     const cryptos = await CryptoCurrency.bulkCreate(cryptoData);
 
-    // Example: Add all cryptocurrencies to all users
-    const userCryptoAssociations = [];
-    for (const user of users) {
-      for (const crypto of cryptos) {
-        userCryptoAssociations.push({
-          user_id: user.id,
-          crypto_id: crypto.id,
-        });
-      }
-    }
-
-    // Seed the WatchList associations
-    await WatchList.bulkCreate(userCryptoAssociations);
+ 
+  
 
     console.log('Database seeded!');
   } catch (error) {

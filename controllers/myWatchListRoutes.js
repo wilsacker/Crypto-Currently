@@ -3,8 +3,6 @@ const router = express.Router();
 const { requireLogin } = require('../helpers/auth');
 const { User, CryptoCurrency, WatchList } = require('../models');
 
-const { v4: uuidv4 } = require('uuid');
-
 // Get watchlist items
 router.get('/', requireLogin, async (req, res) => {
   try {
