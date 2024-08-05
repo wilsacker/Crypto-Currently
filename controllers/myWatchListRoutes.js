@@ -3,6 +3,8 @@ const router = express.Router();
 const { requireLogin } = require('../helpers/auth');
 const { User, CryptoCurrency, WatchList } = require('../models');
 
+const { v4: uuidv4 } = require('uuid');
+
 // Get watchlist items
 router.get('/', requireLogin, async (req, res) => {
   try {
@@ -31,17 +33,32 @@ router.get('/', requireLogin, async (req, res) => {
 });
 
 // Add item to watchlist
-router.post('/add', requireLogin, async (req, res) => {
+router.post('/watchlist/add', requireLogin, async (req, res) => {
   try {
     const { cryptoId } = req.body;
-    const user = await User.findByPk(req.session.userId);
-    const crypto = await CryptoCurrency.findByPk(cryptoId);
+    console.log('Request body:', req.body);
+    console.log('Session data:', req.session);
 
-    if (!user || !crypto) {
-      return res.status(404).json({ message: 'User or Crypto not found' });
+    const user = await User.findByPk(req.session.userId);
+    if (!user) {
+      console.log('User not found for ID:', req.session.userId);
+      return res.status(404).json({ message: 'User not found' });
     }
 
-    await user.addCryptocurrency(crypto);
+    const cryptoData = await fetchCryptoData(cryptoId);
+    if (!cryptoData) {
+      return res.status(404).json({ message: 'Crypto not found' });
+    }
+
+    const crypto = await Crypto.findOrCreate({
+      where: { name: cryptoData.name },
+      defaults: {
+        id: uuidv4(),
+        name: cryptoData.name,
+      }
+    });
+
+    await user.addCrypto(crypto[0]);
     res.status(200).json({ message: 'Added to watchlist successfully' });
   } catch (error) {
     console.error('Error adding to watchlist:', error);
