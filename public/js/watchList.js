@@ -1,24 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
   const addToWatchlistBtn = document.getElementById('add-to-watchlist');
-  const cryptoInfoSection = document.getElementById('crypto-info');
 
   if (addToWatchlistBtn) {
     addToWatchlistBtn.addEventListener('click', async () => {
-      console.log(addToWatchlistBtn);
+      if (!selectedCrypto.symbol) {
+        alert('No cryptocurrency selected or data not available');
+        return;
+      }
+
+      console.log('Adding to watchlist:', selectedCrypto.symbol); // Debugging: Log the symbol being sent
+
       try {
         const response = await fetch('/watchList/add', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ name: "Bitcoin" , symbol :"BTC" }),
+          body: JSON.stringify({ symbol: selectedCrypto.symbol }), 
         });
+
+        const result = await response.json();
+        console.log('Response:', result); // Debugging: Log the response from the server
 
         if (response.ok) {
           alert('Added to watchlist!');
+        } else if (response.status === 401) {
+          alert(result.message);
+          window.location.href = '/login'; // Redirect to login page
         } else {
-          const errorData = await response.json();
-          alert(errorData.message || 'Failed to add to watchlist');
+          alert(result.message || 'Failed to add to watchlist');
         }
       } catch (error) {
         console.error('Error:', error);
@@ -26,29 +36,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  document.querySelectorAll('.remove-from-watchlist').forEach(button => {
-    button.addEventListener('click', async function() {
-      const cryptoId = this.dataset.cryptoId;
-      try {
-        const response = await fetch('/watchlist/remove', {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ cryptoId }),
-        });
-
-        if (response.ok) {
-          this.closest('.watchlist-item').remove();
-        } else {
-          const errorData = await response.json();
-          alert(errorData.message || 'Failed to remove from watchlist');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred while removing from watchlist');
-      }
-    });
-  });
 });

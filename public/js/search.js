@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
       event.preventDefault(); // Prevent form from submitting normally
       const abbreviation = searchInput.value.trim().toUpperCase();
      
-     console.log(abbreviation)
 
       if (abbreviation) {
         performSearch(abbreviation);

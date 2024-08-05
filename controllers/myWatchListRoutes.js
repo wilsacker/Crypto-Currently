@@ -34,8 +34,9 @@ router.get('/', requireLogin, async (req, res) => {
 
 // Add item to watchlist
 router.post('/add', requireLogin, async (req, res) => {
-  // try {
-    const { name , symbol } = req.body;
+  try {
+    const { symbol } = req.body;
+    console.log('Received Symbol:', symbol); // Debugging: Log the symbol received
 
     const user = await User.findByPk(req.session.user_id);
     if (!user) {
@@ -43,29 +44,22 @@ router.post('/add', requireLogin, async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // const cryptoData = await fetchCryptoData(cryptoId);
-    // if (!cryptoData) {
-    //   return res.status(404).json({ message: 'Crypto not found' });
-    // }
-    const cyrptoData = await CryptoCurrency.findOne({ 
-      where : { 
-      symbol
-      }
-    })
+    const cryptoData = await CryptoCurrency.findOne({ where: { symbol } });
+    if (!cryptoData) {
+      console.log('Cryptocurrency not found for symbol:', symbol);
+      return res.status(404).json({ message: 'Cryptocurrency not found' });
+    }
 
-    
-    const crypto = await WatchList.create({
-      crypto_id : cyrptoData.id,
+    await WatchList.create({
+      crypto_id: cryptoData.id,
       user_id: req.session.user_id
-
     });
 
-   
     res.status(200).json({ message: 'Added to watchlist successfully' });
-  // } catch (error) {
-  //   console.error('Error adding to watchlist:', error);
-  //   res.status(500).json({ message: 'Error adding to watchlist' });
-  // }
+  } catch (error) {
+    console.error('Error adding to watchlist:', error);
+    res.status(500).json({ message: 'Error adding to watchlist' });
+  }
 });
 
 module.exports = router;

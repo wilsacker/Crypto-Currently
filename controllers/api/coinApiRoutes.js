@@ -13,11 +13,10 @@ const apiKeyCurrency = "fca_live_lcB5KgViVtG6E9M7fglQ5KVkLn71CudXQWCZ1Bdq";
 const baseUrlCurrency = "https://api.freecurrencyapi.com/v1/latest";
 
 function fetchCryptoData(coin) {
-  console.log(coin)
+ 
   return new Promise((resolve, reject) => {
     const url = `${baseUrlCrypto}exchangerate/${coin}/USD`;
     console.log(`Fetching URL: ${url}`); // Debugging: Log the URL being fetched
-
     fetch(url, {
       headers: {
         "X-CoinAPI-Key": apiKeyCryptoSixth
@@ -44,7 +43,6 @@ function fetchCryptoData(coin) {
         rate: data.rate,
         time: data.time,
       };
-console.log(result);
       resolve(result);
     })
     .catch(error => {
@@ -54,30 +52,12 @@ console.log(result);
   });
 }
 
-function fetchCurrencyData() {
-  return new Promise((resolve, reject) => {
-    const url = `${baseUrlCurrency}?apikey=${apiKeyCurrency}`;
-    fetch(url)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(data => resolve(data))
-      .catch(error => reject(error));
-  });
-}
 
-// Example usage
-// fetchCryptoData('ETH')
-//   .then(data => console.log('Fetched Data:', data))
-//   .catch(error => console.error('Error:', error));
 
 
 module.exports = {
   fetchCryptoData,
-  fetchCurrencyData
+ 
 };
 
 
