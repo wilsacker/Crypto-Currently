@@ -21,6 +21,14 @@ WatchList.init(
       },
       allowNull: false,
     },
+    rate: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    time: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
   },
   {
     sequelize,
