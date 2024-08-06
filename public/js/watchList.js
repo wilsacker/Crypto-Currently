@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const addToWatchListBtn = document.getElementById('add-to-watchlist');
 
-  if (addToWatchlistBtn) {
-    addToWatchlistBtn.addEventListener('click', async () => {
+  if (addToWatchListBtn) {
+    addToWatchListBtn.addEventListener('click', async () => {
 
       const cryptoData = document.getElementById("crypto-price");
       const symbol  = cryptoData.dataset.crypto
