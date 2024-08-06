@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 router.get('/', async (req, res) => {
     try {
         const popularItems = [
@@ -21,5 +20,4 @@ router.get('/', async (req, res) => {
         res.status(500).json({ error: "Failed to fetch popular items" });
     }
 });
-
 module.exports = router;

@@ -1,3 +1,4 @@
+34
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -19,14 +20,6 @@ WatchList.init(
         model: 'crypto_currency', // The model name for CryptoCurrency
         key: 'id',
       },
-      allowNull: false,
-    },
-    rate: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
-    },
-    time: {
-      type: DataTypes.DATE,
       allowNull: false,
     },
   },
