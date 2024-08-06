@@ -2,23 +2,20 @@ const express = require('express');
 const router = express.Router();
 const { requireLogin } = require('../helpers/auth');
 const { User, CryptoCurrency, WatchList } = require('../models');
-
 // Get watchlist items
 router.get('/', requireLogin, async (req, res) => {
   try {
     let user = await User.findByPk(req.session.user_id, {
-      include: [{ 
-        model: CryptoCurrency, 
+      include: [{
+        model: CryptoCurrency,
         as: 'cryptocurrencies',
         through: { attributes: [] } // This will exclude the join table attributes
       }]
     });
-
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    user = user.get({ plain: true });
-
+    user = user.get( {plain : true});
     res.render('watchList', {
       cryptos: user.cryptocurrencies,
       loggedIn: true,
@@ -29,7 +26,6 @@ router.get('/', requireLogin, async (req, res) => {
     res.status(500).json({ message: 'Error fetching watchlist' });
   }
 });
-
 // Add item to watchlist
 router.post('/add', requireLogin, async (req, res) => {
   try {
@@ -55,5 +51,4 @@ router.post('/add', requireLogin, async (req, res) => {
     res.status(500).json({ message: 'Error adding to watchlist' });
   }
 });
-
 module.exports = router;

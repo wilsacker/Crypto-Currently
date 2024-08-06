@@ -2,13 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const signupForm = document.getElementById('signup-form');
   const usernameInput = document.getElementById('username-input-signup');
   const passwordInput = document.getElementById('password-input-signup');
-
   signupForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-
     const username = usernameInput.value.trim();
     const password = passwordInput.value.trim();
-
     if (username && password) {
       try {
         const response = await fetch('/api/users', {
@@ -16,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({ username, password })
         });
-          
         if (response.ok) {
           document.location.replace('/');
         } else {
