@@ -1,0 +1,17 @@
+
+<section id="top-ten-popular">
+            <h2>Top 10 Most Popular</h2>
+            <header>
+               {{#each popularItems}}
+            <button class="popular-items">{{name}} ({{abbreviation}})</button>
+               {{/each}}
+            </header>
+</section>
+
+{{> popularItems }}
+
+       <script src="/js/client.js"></script>
+       {{!-- <script src="js/api.js"></script> --}}
+         
+
+         

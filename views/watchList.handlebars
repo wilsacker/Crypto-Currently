@@ -1,0 +1,14 @@
+<h2>My Watchlist</h2>
+{{#if cryptos.length}}
+  <ul>
+    {{#each cryptos}}
+      <li>{{this.name}} ({{this.symbol}})</li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>Your watchlist is empty.</p>
+{{/if}}
+
+
+
+<script src="/js/watchList.js"></script>

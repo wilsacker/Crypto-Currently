@@ -1,0 +1,423 @@
+body {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-custom {
+    background-color: #343a40;
+    transition: background-color 0.3s;
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color: #fff;
+}
+
+.navbar-custom .navbar-nav .nav-link:hover {
+    color: #adb5bd;
+}
+
+.navbar-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    color: #fff;
+}
+
+.navbar-toggler {
+    border-color: #fff;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 0.7)' stroke-width='2' d='M5 7h20M5 15h20M5 23h20'/%3E%3C/svg%3E");
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-form input {
+    border-radius: 20px 0 0 20px;
+}
+
+.search-form button {
+    border-radius: 0 20px 20px 0;
+}
+
+/* Dark mode styles */
+.dark-mode {
+    background-color: #333;
+    color: #eee;
+}
+
+.dark-mode .navbar-custom {
+    background-color: #212529;
+}
+
+.dark-mode .navbar-custom .navbar-nav .nav-link {
+    color: #dee2e6;
+}
+
+.dark-mode .navbar-custom .navbar-nav .nav-link:hover {
+    color: #adb5bd;
+}
+
+.dark-mode .search-form button {
+    border-color: #fff;
+    color: #fff;
+    background-color: #212529;
+}
+
+.dark-mode .search-form input {
+    border-color: #fff;
+    background-color: #495057;
+    color: #fff;
+}
+
+/* Light mode styles */
+.light-mode {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+.light-mode .navbar-custom {
+    background-color: #343a40;
+}
+
+.light-mode .navbar-custom .navbar-nav .nav-link {
+    color: #fff;
+}
+
+.light-mode .navbar-custom .navbar-nav .nav-link:hover {
+    color: #adb5bd;
+}
+
+.light-mode .search-form button {
+    border-color: #000;
+    color: #000;
+    background-color: #f4f4f4;
+}
+
+.light-mode .search-form input {
+    border-color: #000;
+    background-color: #fff;
+    color: #000;
+}
+
+.theme-toggle {
+    margin-left: 15px;
+}
+
+
+/* Styling for the login card */
+.login-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+/* Styling for the login card header */
+.login-card-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+/* Styling for the login form */
+.login-card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling for form labels */
+.login-form-label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left; /* Align text to the left */
+}
+
+/* Styling for form inputs */
+.login-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+/* Styling for the password wrapper */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+   
+}
+
+/* Styling for password toggle button */
+.toggle-password-btn {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 14px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-left: none;
+    border-bottom: none; 
+    border-right: none; 
+    border-top: none; 
+    border-radius: 0 4px 4px 0;
+    margin: 0;
+    width: 60px;
+    text-align: center;
+    outline: none; /* Remove default focus outline */
+    box-shadow: none; /* Remove any potential shadow */
+}
+
+/* Styling for login button */
+.login-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for signup link */
+.signup-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+
+/* Styling for the signup card */
+.signup-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+/* Styling for the signup card header */
+.signup-card-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+/* Styling for the signup form */
+.signup-card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling for form labels */
+.signup-form-label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left; /* Align text to the left */
+}
+
+/* Styling for form inputs */
+.signup-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding-right: 60px; /* Ensure padding for button space */
+    margin-bottom:15px;
+}
+
+/* Styling for password container */
+.password-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+/* Styling for password toggle button */
+.password-toggle-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 14px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 4px 4px 0;
+    box-shadow: none;
+    outline: none;
+    z-index: 1; /* Ensure button is above input */
+}
+
+/* Styling for signup button */
+.signup-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px;
+    margin-top:3px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signup-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for login link */
+.login-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
+
+/* Styling for the crypto-info section */
+#crypto-info {
+    display: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px auto;
+  }
+   
+
+/* Styling for the watchlist button */
+.watchlist-btn {
+    display: flex;
+    align-items: center;
+    background-color: #25c010;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.watchlist-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for the plus sign inside the button */
+.plus-sign {
+    display: inline-block;
+    background-color: white;
+    color: #007bff;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+.toggle-password-btn:focus,
+.password-toggle-btn:focus {
+    outline: none; /* Ensure no outline on focus */
+    box-shadow: none; /* Remove any potential shadow */
+}
+
+.watchlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.watchlist-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.watchlist-item:last-child {
+    margin-bottom: 0;
+}
+
+.watchlist-item .item-name {
+    font-size: 18px;
+    color: #333;
+}
+
+.watchlist-item .remove-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.watchlist-item .remove-btn:hover {
+    background-color: #e60000;
+}
+.uppercase {
+    text-transform: uppercase;
+}
+@media (max-width: 768px) {
+    .uppercase {
+        text-transform: uppercase;
+    }
+}
+

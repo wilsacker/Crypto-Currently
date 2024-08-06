@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto-Currently</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body class="light-mode">
+    <header class="bg-dark text-white text-center py-3 mb-4">
+        <h1>Crypto-Currently</h1>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    {{#if loggedIn}}
+                    <a class="nav-link" href="/watchList">My Watchlist</a>
+                    {{else}}
+                     <a class="nav-link" href="/login">Watchlist</a>
+                     {{/if}}
+                </li>
+                    <li class="nav-item">
+                        
+                    {{#if loggedIn}}
+                    
+                        <a class="nav-link" href="/" id="logout">Logout</a>
+                        <li>Welcome, <strong class="uppercase">{{username}}</strong></li>
+                        {{else}}
+                        <a class="nav-link" href="/login" id="login">Login</a>
+                        <li class="nav-item"></li>
+                        <a class="nav-link" href="/signup" id="login">Signup</a>
+                        </li>
+                    {{/if}}  
+                   
+                
+            </ul>
+           <form id="crypto-search-form" class="form-inline search-form my-2 my-lg-0">
+  <input id="crypto-search-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+</form>
+            <button id="themeToggle" class="btn btn-outline-light theme-toggle">Toggle Theme</button>
+        </div>
+    </nav>
+<main>
+    {{{body}}}
+</main>
+    
+ {{#if loggedIn}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="/js/search.js"></script>
+
+    <script src="/js/logic.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/signup.js"></script>
+</body>
+</html>
