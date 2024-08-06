@@ -1,75 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crypto-Currently</title>
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../public/css/style.css" rel="stylesheet">
-</head>
-<body class="light-mode">
-   
-    <header class="bg-dark text-white text-center py-3 mb-4">
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="../../public/css/style.css" rel="stylesheet" />
+  </head>
+  <body class="light-mode">
+      <header class="bg-dark text-white text-center py-3 mb-4">
         <h1>Crypto-Currently</h1>
-    </header>
-    
+      </header>
+
     <nav class="navbar navbar-expand-lg navbar-custom">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            {{#if mywatchlist}}
+            <a class="nav-link" href="#">My Watchlist</a>
+            {{#else}}
+            <a class="nav-link" href="#">Watchlist</a>
+            {{/if}}
+          </li>
+
+          <li class="nav-item">
+            {{#If loggedIn}}
+            <a class="nav-link" href="#" id="logout">Logout</a>
+            {{#else}}
+            <a class="nav-link" href="#" id="login">Log In</a>
+            {{/if}}
+          </li>
+        </ul>
+        <form class="form-inline search-form my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+        <button id="themeToggle" class="btn btn-outline-light theme-toggle">
+          Toggle Theme
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    {{#if mywatchlist}}
-                    <a class="nav-link" href="#">My Watchlist</a>
-                    {{#else}}
-                     <a class="nav-link" href="#">Watchlist</a>
-                     {{/if}}
-                </li>
-               
-                    <li class="nav-item">
-                    {{#If loggedIn}}
-                        <a class="nav-link" href="#" id="logout">Logout</a>
-                        {{#else}}
-                        <a class="nav-link" href="#" id="login">Log In</a>
-                    {{/if}}  
-                    </li>
-                
-            </ul>
-            <form class="form-inline search-form my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-            </form>
-            <button id="themeToggle" class="btn btn-outline-light theme-toggle">Toggle Theme</button>
-        </div>
+      </div>
     </nav>
-
     <main>
-    {{{body}}}
-
-    <section id="top-ten-popular">
+      <section id="top-ten-popular">
         <h2>Top 10 Most Popular</h2>
         <ul>
-            {{#each popularItems}}
-                <li>{{this}}</li>
-            {{/each}}
+          {{#each popularItems}}
+          <li>{{this}}</li>
+          {{/each}}
         </ul>
-    </section>
-</main>
-
+      </section>
+      {{{body}}}
+    </main>
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <script src="public/js/logic.js"></script>
     <script src="public/js/api.js"></script>
-     {{#if loggedIn}}
-      <script src="/public/js/logout.js"></script>
+    {{#if loggedIn}}
+    <script src="/public/js/logout.js"></script>
     {{/if}}
-</body>
+  </body>
 </html>
