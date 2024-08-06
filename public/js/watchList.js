@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const addToWatchlistBtn = document.getElementById('add-to-watchlist');
+  const addToWatchListBtn = document.getElementById('add-to-watchlist');
 
   if (addToWatchlistBtn) {
     addToWatchlistBtn.addEventListener('click', async () => {

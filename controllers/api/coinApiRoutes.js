@@ -17,9 +17,10 @@ function fetchCryptoData(coin) {
   return new Promise((resolve, reject) => {
     const url = `${baseUrlCrypto}exchangerate/${coin}/USD`;
     console.log(`Fetching URL: ${url}`); // Debugging: Log the URL being fetched
+    
     fetch(url, {
       headers: {
-        "X-CoinAPI-Key": apiKeyCryptoSixth
+        "X-CoinAPI-Key": apiKeyCrypto
       }
     })
     .then(response => {
@@ -36,7 +37,6 @@ function fetchCryptoData(coin) {
       if (!data.asset_id_base || !data.rate) {
         throw new Error('Unexpected response structure');
       }
-
       const result = {
         name: data.asset_id_base,
         quote: data.asset_id_quote,
@@ -51,9 +51,6 @@ function fetchCryptoData(coin) {
     });
   });
 }
-
-
-
 
 module.exports = {
   fetchCryptoData,

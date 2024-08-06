@@ -11,8 +11,6 @@ router.get('/', async (req, res) => {
         res.status(500).json({ error: "Failed to fetch popular items" });
     }
 });
-
-
   
   // Modify your module.exports to include the router
   module.exports = router;

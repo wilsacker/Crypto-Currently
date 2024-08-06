@@ -17,7 +17,7 @@ router.get('/', requireLogin, async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    user = user.get( {plain : true});
+    user = user.get({ plain: true });
 
     res.render('watchList', {
       cryptos: user.cryptocurrencies,
@@ -33,8 +33,8 @@ router.get('/', requireLogin, async (req, res) => {
 // Add item to watchlist
 router.post('/add', requireLogin, async (req, res) => {
   try {
-    const { symbol } = req.body;
-    console.log('Received Symbol:', symbol); // Debugging: Log the symbol received
+    const { symbol, name, rate, time } = req.body;
+    console.log('Received Data:', req.body); // Debugging: Log the data received
 
     const user = await User.findByPk(req.session.user_id);
     if (!user) {
@@ -42,15 +42,18 @@ router.post('/add', requireLogin, async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    const cryptoData = await CryptoCurrency.findOne({ where: { symbol } });
+    let cryptoData = await CryptoCurrency.findOne({ where: { symbol } });
     if (!cryptoData) {
       console.log('Cryptocurrency not found for symbol:', symbol);
-      return res.status(404).json({ message: 'Cryptocurrency not found' });
+      // If the cryptocurrency does not exist, create it
+      cryptoData = await CryptoCurrency.create({ symbol, name });
     }
 
     await WatchList.create({
       crypto_id: cryptoData.id,
-      user_id: req.session.user_id
+      user_id: req.session.user_id,
+      rate,
+      time
     });
 
     res.status(200).json({ message: 'Added to watchlist successfully' });
